@@ -35,9 +35,9 @@ UIManager.genericDirectEventTypes = {
 // Wrap JS responder calls and notify gesture handler manager
 const {
   setJSResponder: oldSetJSResponder = () => {},
-  clearJSResponder: oldClearJSResponder = () => {},
-  getConstants: oldGetConstants = () => ({}),
+  clearJSResponder: oldClearJSResponder = () => {}
 } = UIManager;
+const oldGetConstants = UIManager.getViewManagerConfig('getConstants');
 UIManager.setJSResponder = (tag, blockNativeResponder) => {
   RNGestureHandlerModule.handleSetJSResponder(tag, blockNativeResponder);
   oldSetJSResponder(tag, blockNativeResponder);
